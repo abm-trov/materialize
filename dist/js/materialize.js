@@ -1771,7 +1771,7 @@ if (Vel) {
             hideDropdown();
             $(document).off('click.' + activates.attr('id'));
           });
-        }, 0);
+        }, 1000);
       }
 
       function hideDropdown() {
@@ -6520,7 +6520,7 @@ if (Vel) {
           // Add the “opened” class to the picker root.
           P.$root.addClass(CLASSES.opened);
           aria(P.$root[0], 'hidden', false);
-        }, 0);
+        }, 100);
 
         // If we have to give focus, bind the element and doc events.
         if (dontGiveFocus !== false) {
@@ -6538,6 +6538,7 @@ if (Vel) {
           P.$root.eq(0).focus();
 
           // Bind the document events.
+          setTimeout(function() {
           $document.on('click.' + STATE.id + ' focusin.' + STATE.id, function (event) {
 
             var target = event.target;
@@ -6601,6 +6602,7 @@ if (Vel) {
                   target.click();
                 }
           });
+        }, 300);
         }
 
         // Trigger the queued “open” events.
@@ -8986,7 +8988,7 @@ if (Vel) {
     $doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function (e) {
       var target = $(e.target);
       if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0) {
-        self.hide();
+        // self.hide();
       }
     });
     // Hide when ESC is pressed
